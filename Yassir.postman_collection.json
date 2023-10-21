@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "27b55ce6-2b31-45cc-8462-a7cbd54cc099",
+		"name": "Yassir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1407257"
+	},
+	"item": [
+		{
+			"name": "Get nearest city air quality",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response includes specified elements\", function () {",
+							"    let response = pm.response.json();",
+							"    pm.expect(response).to.haveOwnProperty('Result')",
+							"    pm.expect(response.Result).to.haveOwnProperty('Pollution')",
+							"    pm.expect(response.Result.Pollution).to.haveOwnProperty('ts')",
+							"    pm.expect(response.Result.Pollution).to.haveOwnProperty('aqius')",
+							"    pm.expect(response.Result.Pollution).to.haveOwnProperty('mainus')",
+							"    pm.expect(response.Result.Pollution).to.haveOwnProperty('aqicn')",
+							"    pm.expect(response.Result.Pollution).to.haveOwnProperty('maincn')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latitude\": 37.53,\n    \"longitude\": 126.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3011/air-quality/nearest-city",
+					"host": [
+						"localhost"
+					],
+					"port": "3011",
+					"path": [
+						"air-quality",
+						"nearest-city"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get datetime most polluted paris",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response includes specified elements\", function () {",
+							"    let response = pm.response.text();",
+							"    pm.expect(response).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latitude\": 37.53,\n    \"longitude\": 126.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3011/air-quality/most-polluted",
+					"host": [
+						"localhost"
+					],
+					"port": "3011",
+					"path": [
+						"air-quality",
+						"most-polluted"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
