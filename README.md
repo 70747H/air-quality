@@ -16,7 +16,7 @@ Before starting, make sure you have at least those components on your workstatio
 Start by cloning this project on your workstation.
 
 ``` sh
-git clone https://github.com/70747H/air-quality.git my-project
+git clone https://github.com/70747H/air-quality.git
 ```
 
 The next thing will be to install all the dependencies of the project.
